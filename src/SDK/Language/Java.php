@@ -40,7 +40,7 @@ class Java extends Language {
             "break",
             "byte",
             "case",
-            "catch"
+            "catch",
             "char",
             "class",
             "const",
@@ -91,6 +91,51 @@ class Java extends Language {
     }
 
     /**
+    * @return array
+    */
+    public function getFiles()
+    {
+        return [
+            [
+                'scope'         => 'default',
+                'destination'   => 'src/sdk.js',
+                'template'      => '/js/src/sdk.js.twig',
+                'minify'        => false,
+            ],
+            [
+                'scope'         => 'default',
+                'destination'   => 'src/sdk.min.js',
+                'template'      => '/js/src/sdk.js.twig',
+                'minify'        => true,
+            ],
+            [
+                'scope'         => 'default',
+                'destination'   => 'README.md',
+                'template'      => '/js/REDAME.md.twig',
+                'minify'        => false,
+            ],
+            [
+                'scope'         => 'default',
+                'destination'   => 'LICENSE',
+                'template'      => '/js/LICENSE.twig',
+                'minify'        => false,
+            ],
+            [
+                'scope'         => 'default',
+                'destination'   => 'package.json',
+                'template'      => '/js/package.json.twig',
+                'minify'        => false,
+            ],
+            [
+                'scope'         => 'method',
+                'destination'   => 'docs/examples/{{service.name | caseLower}}/{{method.name | caseDash}}.md',
+                'template'      => '/js/docs/example.md.twig',
+                'minify'        => false,
+            ],
+        ];
+    }
+
+    /**
     * @param $type
     * @return string
     */
@@ -110,7 +155,7 @@ class Java extends Language {
                 break;
         }
 
-        return $type
+        return $type;
     }
 
     /**
@@ -138,7 +183,7 @@ class Java extends Language {
                     $output .= '""';
                     break;
                 case self::TYPE_ARRAY:
-                    $output .= '[]':
+                    $output .= '[]';
             }
         } else {
             switch($type) {
