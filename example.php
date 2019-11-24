@@ -11,8 +11,9 @@ use Appwrite\SDK\Language\Python;
 use Appwrite\SDK\Language\Ruby;
 use Appwrite\SDK\Language\Dart;
 use Appwrite\SDK\Language\Go;
+use Appwrite\SDK\Language\Java;
 
-$languages  = ['js', 'node', 'php', 'python', 'ruby', 'dart', 'go'];
+$languages  = ['js', 'node', 'php', 'python', 'ruby', 'dart', 'go', 'java'];
 
 try {
 
@@ -128,6 +129,20 @@ try {
     ;
 
     $sdk->generate(__DIR__ . '/examples/go');
+
+    // JAVA
+    
+    $sdk  = new SDK(new Java(), new Swagger2($spec));
+
+    $sdk
+        ->setLogo('https://appwrite.io/v1/images/console.png')
+        ->setLicenseContent('test test test')
+        ->setWarning('**WORK IN PROGRESS - NOT READY FOR USAGE**')
+        ->setGitUserName('repoowner')
+        ->setGitRepoName('reponame')
+    ;
+
+    $sdk->generate(__DIR__ . '/examples/java');
 }
 catch (Exception $exception) {
     echo 'Error: ' . $exception->getMessage() . ' on ' . $exception->getFile() . ':' . $exception->getLine() . "\n";
